@@ -5,31 +5,31 @@
 // va applicato uno sconto del 40% per gli over 65
 
 // Richiesta km da percorrere e controllo dati inseriti
-var km = prompt("Inserisca la distanza da percorrere in km.");
+var km = parseInt(prompt("Inserisca la distanza da percorrere in km."));
 if ( isNaN(km)) {
   alert("Per favore inserisca un valore numerico.");
-  km = prompt("Inserisca la distanza da percorrere in km.");
+  km = parseInt(prompt("Inserisca la distanza da percorrere in km."));
 }
 
 // Richiesta eta e controllo dati inseriti
-var eta = prompt("Inserisca la sua età.");
+var eta = parseInt(prompt("Inserisca la sua età."));
 if ( isNaN(eta)) {
   alert("Per favore inserisca un valore numerico.");
-  eta = prompt("Inserisca la sua età.");
+  eta = parseInt(prompt("Inserisca la sua età."));
 }
+
 // Prezzo biglietto senza sconto
 var costoBiglietto = km * 0.21;
 
 // Ulteriore controllo dati inseriti dall'utente e applicazione sconto
 if ( isNaN(km) || isNaN(eta) ){
-  alert("Mi dispiace i dati inseriti sono errati, ricarica la pagina.")
+  alert("Mi dispiace i dati inseriti sono errati, ricarica la pagina.");
+  costoBiglietto = "Non è stato possibile calcolare il costo del biglietto.";
 } else if ( eta > 65) {
-  costoBiglietto ="Grazie alla tariffa Over65, il costo del biglietto è: " + (costoBiglietto - ( (costoBiglietto * 40) / 100)) + "€";
-  document.getElementById('biglietto').innerHTML = costoBiglietto;
+  costoBiglietto ="Grazie alla tariffa Over65, il costo del biglietto è: " + (Math.round((costoBiglietto - ( (costoBiglietto * 40) / 100)) *100) / 100) + "€";
 } else if ( eta < 18) {
-  costoBiglietto ="Grazie alla tariffa Under18, il costo del biglietto è: " + (costoBiglietto - ( (costoBiglietto * 20) / 100)) + "€";
-  document.getElementById('biglietto').innerHTML = costoBiglietto;
+  costoBiglietto ="Grazie alla tariffa Under18, il costo del biglietto è: " + (Math.round((costoBiglietto - ( (costoBiglietto * 20) / 100)) *100) / 100) + "€";
 } else {
   costoBiglietto = "il costo del biglietto è: " + costoBiglietto + "€";
-  document.getElementById('biglietto').innerHTML = costoBiglietto;
 }
+  document.getElementById('biglietto').innerHTML = costoBiglietto;
